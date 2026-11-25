@@ -5,37 +5,46 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>InstructTTS-OPD: Audio Samples</title>
 <style>
-  :root { --fg:#1f2328; --muted:#59636e; --line:#d1d9e0; --bg-soft:#f6f8fa; --ours:#e8f3ff; --ours-line:#4c8bf5; }
+  :root { color-scheme: light; --ink: #172f38; --muted: #526872; --line: #d6e2e4; --teal: #086967; }
   * { box-sizing: border-box; }
-  body { font-family: -apple-system, "Segoe UI", Helvetica, Arial, "PingFang SC", "Microsoft YaHei", sans-serif;
-         color: var(--fg); margin: 0; line-height: 1.55; }
-  main { max-width: 1280px; margin: 0 auto; padding: 32px 24px 64px; }
-  h1 { font-size: 1.8rem; margin: 0 0 4px; }
-  h2 { font-size: 1.35rem; margin: 40px 0 6px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
-  h3 { font-size: 1.1rem; margin: 28px 0 4px; }
-  .sub { color: var(--muted); margin: 0 0 20px; }
-  .desc { color: var(--muted); margin: 4px 0 12px; }
-  .note { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 6px; padding: 12px 16px; margin: 16px 0; }
-  .note ul { margin: 6px 0 0; padding-left: 20px; }
-  table { border-collapse: collapse; width: 100%; table-layout: fixed; margin-bottom: 8px; }
-  th, td { border: 1px solid var(--line); padding: 8px; vertical-align: top; }
-  th { background: var(--bg-soft); font-weight: 600; font-size: .92rem; }
-  th.ours, td.ours { background: var(--ours); }
-  th.ours { border-bottom: 2px solid var(--ours-line); }
-  td.prompt { width: 26%; font-size: .9rem; }
+  body { margin: 0; background: #f5f8f8; color: var(--ink); font: 1rem/1.6 "Inter", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+  main { max-width: 1480px; margin: auto; padding: clamp(12px, 3vw, 48px); }
+  header { position: relative; isolation: isolate; overflow: hidden; border-radius: 20px; padding: clamp(28px, 5vw, 80px); background: linear-gradient(115deg, #102f3a, #155259); color: #f6fffc; }
+  header::after { content: ""; position: absolute; z-index: -1; inset: 0 0 0 60%; background: repeating-radial-gradient(ellipse at 105% 110%, transparent 0 12px, #83d0c254 13px, transparent 14px 20px); mask-image: linear-gradient(90deg, transparent, black); }
+  h1, h2 { font-family: "Baskervville", Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -.035em; text-wrap: balance; }
+  h1 { margin: 0; font-size: clamp(2.3rem, 4.6vw, 4.6rem); }
+  .sub { max-width: 650px; margin: 1rem 0 0; color: #d3e8e6; }
+  h2 { margin: clamp(40px, 5vw, 74px) 0 24px; padding-bottom: 16px; border-bottom: 1px solid #aac4c6; font-size: clamp(1.85rem, 3vw, 3rem); }
+  h3 { margin: 36px 0 4px; font-size: 1.2rem; line-height: 1.4; }
+  .desc { margin: 4px 0 16px; max-width: 85ch; color: var(--muted); }
+  .table-wrap { overflow-x: auto; background: white; border: 1px solid var(--line); border-radius: 14px; }
+  .table-wrap:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+  table { width: 100%; min-width: var(--table-min); border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+  th, td { padding: 14px clamp(10px, 1vw, 18px); text-align: left; }
+  th { background: #e7eff0; color: #344e58; font-size: .9rem; }
+  th:first-child { width: 32%; }
+  td { vertical-align: middle; border-top: 1px solid var(--line); }
+  td + td, th + th { border-left: 1px solid #e1eaeb; }
+  th.ours { background: #cdeae2; color: #14564c; }
+  td.ours { background: #f0faf6; }
   .instr { font-weight: 600; }
-  .en { color: var(--muted); font-size: .85rem; }
-  .text { margin-top: 6px; }
-  audio { width: 100%; height: 36px; }
-  .missing { font-size: .8rem; color: #cf222e; }
-  table.legend td:first-child { width: 22%; font-weight: 600; }
-  .focus { display: inline-block; font-size: .75rem; padding: 1px 8px; margin-bottom: 6px; border-radius: 10px; background: #fff4e5; color: #9a6700; border: 1px solid #f0c674; }
+  .en { margin-top: 3px; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+  .text { margin-top: 12px; }
+  audio { display: block; width: 100%; height: 38px; }
+  .focus { display: inline-block; margin-bottom: 8px; padding: 2px 9px; border-radius: 6px; background: #e4f2ef; color: #225e56; font-size: .875rem; }
+  @media (max-width: 700px) {
+    header { border-radius: 14px; }
+    .table-wrap { border-radius: 10px; }
+    th:first-child { width: 230px; }
+  }
 </style>
 </head>
 <body>
 <main>
+  <header>
   <h1>InstructTTS-OPD: Audio Samples</h1>
   <p class="sub">On-Policy Distillation for Multi-Objective Instruction-Following TTS (anonymous submission).</p>
+  </header>
 
   <h2>Reward analysis: hearing the reward failures</h2>
   <div id="reward-sections"></div>
@@ -47,7 +56,7 @@
 <script src="samples.js"></script>
 <script>
 function renderTable(systems, samples) {
-  let h = '<table><thead><tr><th style="width:26%">Instruction / Transcript</th>';
+  let h = `<div class="table-wrap" tabindex="0" style="--table-min:${250 + systems.length * 190}px"><table><thead><tr><th>Instruction / Transcript</th>`;
   for (const s of systems) h += '<th class="' + (s.ours ? "ours" : "") + '">' + s.name + "</th>";
   h += "</tr></thead><tbody>";
   for (const x of samples) {
@@ -64,7 +73,7 @@ function renderTable(systems, samples) {
     }
     h += "</tr>";
   }
-  return h + "</tbody></table>";
+  return h + "</tbody></table></div>";
 }
 
 let html = "";
